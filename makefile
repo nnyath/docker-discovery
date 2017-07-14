@@ -9,14 +9,14 @@ shell:
 shellnginx:
 	@docker exec -it jenkins-nginx /bin/bash
 runjenkins:
-	@docker run -p 8080:8080 -p 50000:50000 --name=jenkins-master --volumes-from=jenkins-data -d myjenkins
+	@docker run -p 50000:50000 --name=jenkins-master --volumes-from=jenkins-data -d myjenkins
 rundata:
 	@docker run --name=jenkins-data myjenkinsdata
 clearn:
 	@docker stop jenkins-nginx
 	@docker rm -v jenkins-nginx	
 runnginx:
-	@docker run -p 80:80 --name=jenkins-nginx -d myjenkinsproxy
+	@docker run -p 80:80 --name=jenkins-nginx --link jenkins-master -d myjenkinsproxy
 start:
 	@docker start jenkins-master
 	@docker start jenkins-data
