@@ -1,11 +1,17 @@
 jenkinsdata:
  build: jenkins-data
+jenkinstomcat:
+ build: jenkins-tomcat
+ ports:
+  - "8080:8080"  
 jenkinsmaster:
  build: jenkins-master
  volumes_from:
   - jenkinsdata
  ports:
   - "50000:50000"
+ links:
+  - jenkinstomcat:jenkins-tomcat
 jenkinsnginx:
  build: jenkins-nginx
  ports:
