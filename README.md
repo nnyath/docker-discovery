@@ -5,3 +5,7 @@ Aiming to build a very basic CI pipeline with Jenkins, NGINX (web-proxy), Java, 
 TODO:
 - [ ] Forward Tomcat static resources
 - [ ] Less hardcoding
+- [ ] Consolidate to docker-compose ver 2 or ver 3
+- [ ] Mount specific directories for volumes
+- [ ] Init Jenkins with preset configs
+- [ ] Create config files

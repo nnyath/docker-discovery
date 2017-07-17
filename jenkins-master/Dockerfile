@@ -8,6 +8,10 @@ RUN wget -O /tmp/gradle-3.4.1-bin.zip https://services.gradle.org/distributions/
 RUN mkdir /opt/gradle
 RUN unzip -d /opt/gradle /tmp/gradle-3.4.1-bin.zip
 
+#Install NodeJS/NPM
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
+
 #Create the logs and cache directory
 RUN mkdir /var/log/jenkins
 RUN mkdir /var/cache/jenkins

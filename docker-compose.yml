@@ -1,21 +1,38 @@
-jenkinsdata:
- build: jenkins-data
-jenkinstomcat:
- build: jenkins-tomcat
- ports:
-  - "8080:8080"  
-jenkinsmaster:
- build: jenkins-master
- volumes_from:
-  - jenkinsdata
- ports:
-  - "50000:50000"
- links:
-  - jenkinstomcat:jenkins-tomcat
-jenkinsnginx:
- build: jenkins-nginx
- ports:
-  - "80:80"
- links:
-  - jenkinsmaster:jenkins-master
-  - jenkinstomcat:jenkins-tomcat
+version: "2"
+
+services: 
+  jenkinsdata: 
+    build: jenkins-data
+  jenkinsmaster: 
+    build: jenkins-master
+    ports: 
+      - "50000:50000"
+    networks:
+      - front-tier
+    volumes_from: 
+      - jenkinsdata
+    depends_on:
+      - jenkinsdata 
+  jenkinstomcat: 
+    build: jenkins-tomcat
+    networks:
+      - front-tier
+  jenkinsnginx: 
+    build: jenkins-nginx
+    ports: 
+      - "80:80"
+    networks:
+      - front-tier
+    volumes_from:
+      - jenkinsdata
+    depends_on:
+      - jenkinsmaster
+      - jenkinstomcat
+      - jenkinsdata
+      
+networks:
+  front-tier:
+    driver: bridge
+
+volumes:
+  jenkinsdata:
