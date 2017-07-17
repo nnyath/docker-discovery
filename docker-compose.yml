@@ -18,3 +18,4 @@ jenkinsnginx:
   - "80:80"
  links:
   - jenkinsmaster:jenkins-master
+  - jenkinstomcat:jenkins-tomcat

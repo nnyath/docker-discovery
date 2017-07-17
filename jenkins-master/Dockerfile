@@ -18,4 +18,4 @@ USER jenkins
 #Set the container env vars
 #ENV JAVA_OPTS='-Xmx1024m'
 ENV PATH /opt/gradle/gradle-3.4.1/bin:$PATH
-ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war"
+ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war --prefix=/jenkins"

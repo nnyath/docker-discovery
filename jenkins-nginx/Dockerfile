@@ -9,7 +9,9 @@ RUN useradd --no-create-home nginx
 RUN rm /etc/nginx/nginx.conf 
 RUN mkdir /etc/nginx/conf.d
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/tomcat.conf /etc/nginx/conf.d/tomcat.conf
 COPY ./conf/jenkins.conf /etc/nginx/conf.d/jenkins.conf
+
 
 EXPOSE 80
 
