@@ -23,3 +23,9 @@ USER jenkins
 #ENV JAVA_OPTS='-Xmx1024m'
 ENV PATH /opt/gradle/gradle-3.4.1/bin:$PATH
 ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war --prefix=/jenkins"
+
+#Run plugin install script
+COPY ./conf/plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
+#Copy default jobs - Take notes from default install-plugins.sh to inject default builds into Jenkins .WAR

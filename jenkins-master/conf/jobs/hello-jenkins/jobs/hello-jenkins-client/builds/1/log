@@ -1,0 +1,57 @@
+Started by user [8mha:////4NiKTdRHwPbSIvzI1t/W9EJQNFd58/eomb4TMVq851ZKAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Building in workspace /var/jenkins_home/workspace/hello-jenkins/hello-jenkins-client
+[WS-CLEANUP] Deleting project workspace...
+Cloning the remote Git repository
+Cloning repository https://github.com/nnyath/hello-jenkins-client
+ > git init /var/jenkins_home/workspace/hello-jenkins/hello-jenkins-client # timeout=10
+Fetching upstream changes from https://github.com/nnyath/hello-jenkins-client
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/nnyath/hello-jenkins-client +refs/heads/*:refs/remotes/origin/*
+ > git config remote.origin.url https://github.com/nnyath/hello-jenkins-client # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/nnyath/hello-jenkins-client # timeout=10
+Fetching upstream changes from https://github.com/nnyath/hello-jenkins-client
+ > git fetch --tags --progress https://github.com/nnyath/hello-jenkins-client +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision b2ba570440695410348d2376fe06c636fbb0961c (refs/remotes/origin/master)
+Commit message: "Changing API endpoint"
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b2ba570440695410348d2376fe06c636fbb0961c
+First time build. Skipping changelog.
+[hello-jenkins-client] $ /bin/sh -xe /tmp/jenkins8805097996048678449.sh
++ npm install
+npm WARN deprecated babel@6.23.0: In 6.x, the babel package has been deprecated in favor of babel-cli. Check https://opencollective.com/babel to support the Babel maintainers
+
+> fsevents@1.1.2 install /var/jenkins_home/workspace/hello-jenkins/hello-jenkins-client/node_modules/fsevents
+> node install
+
+
+> uglifyjs-webpack-plugin@0.4.6 postinstall /var/jenkins_home/workspace/hello-jenkins/hello-jenkins-client/node_modules/uglifyjs-webpack-plugin
+> node lib/post_install.js
+
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN hello-jenkins-client@1.0.0 No description
+npm WARN hello-jenkins-client@1.0.0 No repository field.
+
+added 630 packages in 13.468s
++ npm run build
+
+> hello-jenkins-client@1.0.0 build /var/jenkins_home/workspace/hello-jenkins/hello-jenkins-client
+> webpack --config webpack.config.js
+
+Hash: 7f482c3ac3ca82ff2362
+Version: webpack 3.3.0
+Time: 655ms
+     Asset       Size  Chunks             Chunk Names
+ bundle.js    27.4 kB       0  [emitted]  main
+index.html  249 bytes          [emitted]  
+   [0] multi ./src/index.js 28 bytes {0} [built]
+   [1] ./src/index.js 187 bytes {0} [built]
+Child html-webpack-plugin for "index.html":
+       [0] ./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html 557 bytes {0} [built]
+       [2] (webpack)/buildin/global.js 509 bytes {0} [built]
+       [3] (webpack)/buildin/module.js 517 bytes {0} [built]
+        + 1 hidden module
++ cp -r dist/bundle.js dist/index.html /var/http
+Finished: SUCCESS

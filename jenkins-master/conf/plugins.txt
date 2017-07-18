@@ -1,0 +1,7 @@
+git
+build-timeout
+timestamper
+ws-cleanup
+workflow-aggregator
+pipeline-stage-view
+deploy

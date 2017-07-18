@@ -1,10 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
-  <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.3.2">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.4.0">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -26,25 +25,14 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <hudson.triggers.TimerTrigger>
-      <spec>H/5 * * * *</spec>
+      <spec>H/15 * * * *</spec>
     </hudson.triggers.TimerTrigger>
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.plugins.gradle.Gradle plugin="gradle@1.27.1">
-      <switches></switches>
-      <tasks>war</tasks>
-      <rootBuildScriptDir></rootBuildScriptDir>
-      <buildFile></buildFile>
-      <gradleName>(Default)</gradleName>
-      <useWrapper>false</useWrapper>
-      <makeExecutable>false</makeExecutable>
-      <useWorkspaceAsHome>false</useWorkspaceAsHome>
-      <wrapperLocation></wrapperLocation>
-      <passAllAsSystemProperties>false</passAllAsSystemProperties>
-      <projectProperties></projectProperties>
-      <passAllAsProjectProperties>false</passAllAsProjectProperties>
-    </hudson.plugins.gradle.Gradle>
+    <hudson.tasks.Shell>
+      <command>gradle war</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.plugins.deploy.DeployPublisher plugin="deploy@1.10">
@@ -60,5 +48,17 @@
       <onFailure>false</onFailure>
     </hudson.plugins.deploy.DeployPublisher>
   </publishers>
-  <buildWrappers/>]
- </project> 
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.34">
+      <deleteDirs>false</deleteDirs>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper plugin="build-timeout@1.18">
+      <strategy class="hudson.plugins.build_timeout.impl.AbsoluteTimeOutStrategy">
+        <timeoutMinutes>1</timeoutMinutes>
+      </strategy>
+      <operationList/>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+</project>

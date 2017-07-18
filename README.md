@@ -7,5 +7,7 @@ TODO:
 - [ ] Less hardcoding
 - [ ] Consolidate to docker-compose ver 2 or ver 3
 - [ ] Mount specific directories for volumes
-- [ ] Init Jenkins with preset configs
+- [x] Init Jenkins with preset plugins
 - [ ] Create config files
+- [ ] Figure out how to use plugins properly for Pipeline builds
+- [ ] Create script to bundle default jobs
